@@ -1,5 +1,8 @@
 using POC.Service.Interfaces.Services;
 using POC.Service.Services;
+using POC.Service.Utils;
+using POC.Service.Models.XMLs;
+using POC.Service.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,6 +14,10 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddScoped<IKafkaProducerService, KafkaProducerService>();
+builder.Services.AddScoped<ISOAPService, SOAPService>();
+builder.Services.AddHttpClient<ISOAPService, SOAPService>();
+builder.Services.AddScoped<XmlParser>();
+
 
 var app = builder.Build();
 

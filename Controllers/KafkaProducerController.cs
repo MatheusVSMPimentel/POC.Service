@@ -19,9 +19,8 @@ namespace POC.Service.Controllers
         }
 
         [HttpGet("")]
-        public async Task<ActionResult<IEnumerable<TModel>>> GetTModels()
+        public async Task<ActionResult<IEnumerable<TModel>>> GetHelloKafka()
         {
-            // TODO: Your code here
             if(await _kafkaProducerService.SenderMessageKafka("Hello World!"))
             return Ok("200");
 
